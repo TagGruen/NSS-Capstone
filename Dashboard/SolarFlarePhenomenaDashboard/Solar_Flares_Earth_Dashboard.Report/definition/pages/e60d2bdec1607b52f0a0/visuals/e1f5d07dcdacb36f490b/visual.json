@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "e1f5d07dcdacb36f490b",
+  "position": {
+    "x": 24,
+    "y": 220,
+    "z": 40,
+    "height": 230,
+    "width": 590,
+    "tabOrder": 40
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Phenomenon"
+                }
+              },
+              "queryRef": "HeadlineSummary.Phenomenon",
+              "nativeQueryRef": "Phenomenon",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "HeadlineSummary"
+                        }
+                      },
+                      "Property": "Pearson r"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(HeadlineSummary.Pearson r)",
+              "nativeQueryRef": "Sum of Pearson r"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Representative Pearson r by phenomenon'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

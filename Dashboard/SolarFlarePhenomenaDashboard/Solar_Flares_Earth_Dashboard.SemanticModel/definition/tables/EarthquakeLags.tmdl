@@ -1,0 +1,73 @@
+table EarthquakeLags
+	lineageTag: 3a5e828a-29d3-4364-8cf7-da85c47b9801
+
+	/// Lagged Pearson correlation results for all earthquakes and magnitude 6+ earthquakes.
+	column 'Lag Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4dad419e-de38-458a-8a2b-602d51fb4672
+		summarizeBy: none
+		sourceColumn: LagDays
+
+	column 'All earthquakes r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 6201bf3b-2c03-40db-95c4-3b7ca188f1f6
+		summarizeBy: none
+		sourceColumn: AllEarthquakesR
+
+	column 'All earthquakes p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 97b64226-9bd2-4d68-84e0-cbdfaf382131
+		summarizeBy: none
+		sourceColumn: AllEarthquakesP
+
+	column 'All earthquakes FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: f1f794f6-9508-4feb-a89d-d4b2e81d3f4e
+		summarizeBy: none
+		sourceColumn: AllEarthquakesFDRP
+
+	column 'M6+ earthquakes r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 95152d94-c452-41b5-b80c-1a2f8132e4c3
+		summarizeBy: none
+		sourceColumn: M6EarthquakesR
+
+	column 'M6+ earthquakes p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: bdfc99cd-5f34-4f6b-b970-4990e15dd3a7
+		summarizeBy: none
+		sourceColumn: M6EarthquakesP
+
+	column 'M6+ earthquakes FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 9ab89661-e93d-4917-adf0-e389e1398ef3
+		summarizeBy: none
+		sourceColumn: M6EarthquakesFDRP
+
+	partition EarthquakeLags = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [LagDays = Int64.Type, AllEarthquakesR = number, AllEarthquakesP = number, AllEarthquakesFDRP = number, M6EarthquakesR = number, M6EarthquakesP = number, M6EarthquakesFDRP = number],
+						{
+							{0, -0.007566, 0.64755, 0.740058, -0.013193, 0.425353, 0.425353},
+							{1, 0.001013, 0.951216, 0.951216, -0.028833, 0.081471, 0.108628},
+							{2, -0.027533, 0.09624, 0.157293, -0.032722, 0.04804, 0.076864},
+							{3, -0.025009, 0.130883, 0.174511, -0.043994, 0.007853, 0.061771},
+							{4, -0.02766, 0.0948, 0.157293, -0.033942, 0.040346, 0.076864},
+							{5, -0.027374, 0.098308, 0.157293, -0.040095, 0.015443, 0.061771},
+							{6, -0.02967, 0.0732, 0.157293, -0.01844, 0.265576, 0.303515},
+							{7, -0.038015, 0.021708, 0.157293, -0.034561, 0.036908, 0.076864}
+						}
+					)
+				in
+					Source
+

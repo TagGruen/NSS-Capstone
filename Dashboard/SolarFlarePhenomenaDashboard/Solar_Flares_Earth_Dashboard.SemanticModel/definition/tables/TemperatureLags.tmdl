@@ -1,0 +1,115 @@
+table TemperatureLags
+	lineageTag: 5316d8ad-fc22-470e-9951-2988e829c49c
+
+	/// Lagged global temperature anomaly results through July 2022.
+	column 'Lag Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: d88e6e0f-f591-47c7-ae1d-8fd9aca8fe5c
+		summarizeBy: none
+		sourceColumn: LagDays
+
+	column 'Flare count r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 60e62c46-7610-41d3-9be7-a8295b520817
+		summarizeBy: none
+		sourceColumn: FlareCountR
+
+	column 'Flare count p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 42d6ca3d-1ec5-4a37-b595-fba2c79d352c
+		summarizeBy: none
+		sourceColumn: FlareCountP
+
+	column 'Flare count FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 0c35b3ed-ea72-4cfc-8033-f6c7ce7c6bb6
+		summarizeBy: none
+		sourceColumn: FlareCountFDRP
+
+	column 'Flare energy r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: a31c5130-15e5-43f5-8a9f-137a92640566
+		summarizeBy: none
+		sourceColumn: FlareEnergyR
+
+	column 'Flare energy p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 16abf5a8-bbde-4a57-955f-f51a77ff524f
+		summarizeBy: none
+		sourceColumn: FlareEnergyP
+
+	column 'Flare energy FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 4c86f569-6f45-4b2a-b191-7819ba02af8e
+		summarizeBy: none
+		sourceColumn: FlareEnergyFDRP
+
+	column 'X-class r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 36d26ab8-55cd-4f05-ad9f-5c9ced1a5765
+		summarizeBy: none
+		sourceColumn: XClassR
+
+	column 'X-class p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: ec943465-1315-4410-a7b9-9fbda41961ee
+		summarizeBy: none
+		sourceColumn: XClassP
+
+	column 'X-class FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: d9d87dcb-d433-468a-9759-6853192008d1
+		summarizeBy: none
+		sourceColumn: XClassFDRP
+
+	column 'M-class r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 237fd85c-bbd0-4b2b-828d-b8a95636d292
+		summarizeBy: none
+		sourceColumn: MClassR
+
+	column 'M-class p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: fbbf066b-e339-4b30-9947-220b339107fa
+		summarizeBy: none
+		sourceColumn: MClassP
+
+	column 'M-class FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: d69f3ced-0b82-4761-9475-e372e0483e6e
+		summarizeBy: none
+		sourceColumn: MClassFDRP
+
+	partition TemperatureLags = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [LagDays = Int64.Type, FlareCountR = number, FlareCountP = number, FlareCountFDRP = number, FlareEnergyR = number, FlareEnergyP = number, FlareEnergyFDRP = number, XClassR = number, XClassP = number, XClassFDRP = number, MClassR = number, MClassP = number, MClassFDRP = number],
+						{
+							{0, -0.022433, 0.27167, 0.724454, -0.03224, 0.114109, 0.753811, -0.022645, 0.267168, 0.996016, -0.034223, 0.093499, 0.500697},
+							{1, -0.026302, 0.197536, 0.724454, -0.025865, 0.205081, 0.753811, -0.019472, 0.34013, 0.996016, -0.031296, 0.125174, 0.500697},
+							{2, -0.024283, 0.234278, 0.724454, -0.018084, 0.375758, 0.753811, -0.01412, 0.489223, 0.996016, -0.02576, 0.207029, 0.552078},
+							{3, -0.016442, 0.420746, 0.841493, -0.011046, 0.588585, 0.753811, -0.00915, 0.654123, 0.996016, -0.014015, 0.492541, 0.958459},
+							{4, -0.011825, 0.56267, 0.900272, -0.009592, 0.63865, 0.753811, -0.008995, 0.659682, 0.996016, -0.006231, 0.76032, 0.958459},
+							{5, -0.003513, 0.863481, 0.986836, -0.013709, 0.502233, 0.753811, -0.004275, 0.834256, 0.996016, -0.001064, 0.958459, 0.958459},
+							{6, 0.000017, 0.999324, 0.999324, -0.008597, 0.673972, 0.753811, 0.000102, 0.996016, 0.996016, 0.003777, 0.853375, 0.958459},
+							{7, 0.003524, 0.863118, 0.986836, -0.00641, 0.753811, 0.753811, 0.001228, 0.952085, 0.996016, 0.003025, 0.882356, 0.958459}
+						}
+					)
+				in
+					Source
+

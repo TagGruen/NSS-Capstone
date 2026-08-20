@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4e93d8062c728b823a19",
+  "position": {
+    "x": 630,
+    "y": 220,
+    "z": 50,
+    "height": 230,
+    "width": 626,
+    "tabOrder": 50
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Phenomenon"
+                }
+              },
+              "queryRef": "HeadlineSummary.Phenomenon",
+              "nativeQueryRef": "Phenomenon"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Solar Measure"
+                }
+              },
+              "queryRef": "HeadlineSummary.Solar Measure",
+              "nativeQueryRef": "Solar Measure"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Best Lag (days)"
+                }
+              },
+              "queryRef": "HeadlineSummary.Best Lag (days)",
+              "nativeQueryRef": "Best Lag (days)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Pearson r"
+                }
+              },
+              "queryRef": "HeadlineSummary.Pearson r",
+              "nativeQueryRef": "Pearson r"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "FDR p"
+                }
+              },
+              "queryRef": "HeadlineSummary.FDR p",
+              "nativeQueryRef": "FDR p"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HeadlineSummary"
+                    }
+                  },
+                  "Property": "Significant"
+                }
+              },
+              "queryRef": "HeadlineSummary.Significant",
+              "nativeQueryRef": "Significant"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Headline findings'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

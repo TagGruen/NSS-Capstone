@@ -1,0 +1,136 @@
+table PrecipitationLags
+	lineageTag: 906bc201-7851-4407-abf1-f203100713ef
+
+	/// Lagged global precipitation results, including seasonally adjusted precipitation anomaly.
+	column 'Lag Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 409ed85c-e2dc-428b-94ec-667bb215e110
+		summarizeBy: none
+		sourceColumn: LagDays
+
+	column 'Raw precipitation r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 23a443b2-61f6-4bfb-8337-00b7325131b4
+		summarizeBy: none
+		sourceColumn: RawPrecipitationR
+
+	column 'Raw precipitation p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 912cb8eb-d607-4da3-a593-01f9d75b4609
+		summarizeBy: none
+		sourceColumn: RawPrecipitationP
+
+	column 'Raw precipitation FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 1d5843e6-9006-4a7a-bf81-e5bffbda6ccf
+		summarizeBy: none
+		sourceColumn: RawPrecipitationFDRP
+
+	column 'Precip anomaly r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 58773e4c-236d-466b-8c84-f34106503006
+		summarizeBy: none
+		sourceColumn: PrecipAnomalyR
+
+	column 'Precip anomaly p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: dc706120-1bc7-47f7-96f5-50a3df1668b1
+		summarizeBy: none
+		sourceColumn: PrecipAnomalyP
+
+	column 'Precip anomaly FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 4357891f-43e1-4620-90a5-851a3e7c6484
+		summarizeBy: none
+		sourceColumn: PrecipAnomalyFDRP
+
+	column 'Flare energy r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: c7ff217e-8045-40d4-9476-a076feb1bd5c
+		summarizeBy: none
+		sourceColumn: FlareEnergyR
+
+	column 'Flare energy p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 0fbd8575-8ff0-426c-a261-89bc5ac89cf1
+		summarizeBy: none
+		sourceColumn: FlareEnergyP
+
+	column 'Flare energy FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 54819145-0504-475b-a64f-6e6de8f8f737
+		summarizeBy: none
+		sourceColumn: FlareEnergyFDRP
+
+	column 'X-class r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 4d479d86-67c2-4667-8bc8-1337171d8eec
+		summarizeBy: none
+		sourceColumn: XClassR
+
+	column 'X-class p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 4ebddea3-b852-4299-93d2-8f7c89078964
+		summarizeBy: none
+		sourceColumn: XClassP
+
+	column 'X-class FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 092fae5b-dd05-4783-8359-a61d3700313d
+		summarizeBy: none
+		sourceColumn: XClassFDRP
+
+	column 'M-class r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: f4a2fb35-4463-49c1-97db-bb302d527f4b
+		summarizeBy: none
+		sourceColumn: MClassR
+
+	column 'M-class p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 46ace28c-4abd-4954-996a-fb7d149af3f1
+		summarizeBy: none
+		sourceColumn: MClassP
+
+	column 'M-class FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 2809e3d8-1f8c-456c-894c-a5dc5b079e0e
+		summarizeBy: none
+		sourceColumn: MClassFDRP
+
+	partition PrecipitationLags = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [LagDays = Int64.Type, RawPrecipitationR = number, RawPrecipitationP = number, RawPrecipitationFDRP = number, PrecipAnomalyR = number, PrecipAnomalyP = number, PrecipAnomalyFDRP = number, FlareEnergyR = number, FlareEnergyP = number, FlareEnergyFDRP = number, XClassR = number, XClassP = number, XClassFDRP = number, MClassR = number, MClassP = number, MClassFDRP = number],
+						{
+							{0, 0.055532, 0.000916, 0.001465, 0.029552, 0.077859, 0.077859, 0.024652, 0.141341, 0.226146, 0.016749, 0.317699, 0.508318, 0.026779, 0.110104, 0.110104},
+							{1, 0.059819, 0.000356, 0.001343, 0.037715, 0.024429, 0.039086, 0.011494, 0.492986, 0.492986, 0.003839, 0.818903, 0.818903, 0.032041, 0.055932, 0.063922},
+							{2, 0.057283, 0.000629, 0.001343, 0.03888, 0.020365, 0.039086, 0.021478, 0.200181, 0.228778, 0.018836, 0.261253, 0.508318, 0.032075, 0.055707, 0.063922},
+							{3, 0.054153, 0.001232, 0.001643, 0.042585, 0.011072, 0.029525, 0.021729, 0.195045, 0.228778, 0.011277, 0.501309, 0.642932, 0.046994, 0.005052, 0.013472},
+							{4, 0.04641, 0.005632, 0.006437, 0.035096, 0.036345, 0.04846, 0.025723, 0.125068, 0.226146, 0.023317, 0.164434, 0.438491, 0.036559, 0.029231, 0.058463},
+							{5, 0.043213, 0.009961, 0.009961, 0.033097, 0.048441, 0.055361, 0.025307, 0.131347, 0.226146, 0.025932, 0.122087, 0.438491, 0.033195, 0.047777, 0.063922},
+							{6, 0.057015, 0.000671, 0.001343, 0.046696, 0.005358, 0.02143, 0.038355, 0.022201, 0.122669, 0.028642, 0.087734, 0.438491, 0.049885, 0.002928, 0.011714},
+							{7, 0.067118, 0.000062, 0.000497, 0.057563, 0.000596, 0.00477, 0.036256, 0.030667, 0.122669, 0.009716, 0.562565, 0.642932, 0.063654, 0.000146, 0.00117}
+						}
+					)
+				in
+					Source
+

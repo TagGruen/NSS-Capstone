@@ -1,0 +1,88 @@
+table Summary
+	lineageTag: 3c48a0c1-7d07-47d6-a963-889fc88aaf45
+
+	/// Six headline result rows from the solar-flare terrestrial-phenomena analysis.
+	/// Largest absolute Pearson correlation among the headline summary rows.
+	measure 'Strongest Abs r' = MAXX('Summary', ABS('Summary'[Pearson r]))
+		formatString: 0.000
+		lineageTag: 942bb7cb-2075-4ec1-9c57-a77781f8f0cf
+
+	/// Lowest false-discovery-rate adjusted p-value among headline findings.
+	measure 'Lowest FDR p' = MIN('Summary'[FDR p])
+		formatString: 0.00000
+		lineageTag: 3036a504-327f-4c92-9908-fdd7f283af33
+
+	/// Number of headline result rows with FDR-adjusted p below 0.05.
+	measure 'Significant Findings' = CALCULATE(COUNTROWS('Summary'), 'Summary'[Significant] = "Yes")
+		formatString: 0
+		lineageTag: 505d087a-6569-4b62-8204-2540228c0f53
+
+	column Phenomenon
+		dataType: string
+		lineageTag: 8de62710-cd13-405b-88fb-06ed88ec539e
+		summarizeBy: none
+		sourceColumn: Phenomenon
+
+	column 'Solar Measure'
+		dataType: string
+		lineageTag: 517537b2-554c-42e9-a010-8d940dc4a960
+		summarizeBy: none
+		sourceColumn: SolarMeasure
+
+	column 'Best Lag (days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cdf62a5-078a-4fe9-8268-ec75d1490a81
+		summarizeBy: none
+		sourceColumn: BestLagDays
+
+	column 'Pearson r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: c2b424e3-9fcf-42e8-b2ea-6e163125fb06
+		summarizeBy: none
+		sourceColumn: PearsonR
+
+	column 'FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: feee05ce-8842-4dd3-a92e-a803df96d9f9
+		summarizeBy: none
+		sourceColumn: FDRP
+
+	column Significant
+		dataType: string
+		lineageTag: d9d4a53d-8c20-4de2-9b09-cba4bf1a5946
+		summarizeBy: none
+		sourceColumn: Significant
+
+	column Interpretation
+		dataType: string
+		lineageTag: e9a001d9-52b7-4d0a-baa2-82cc1816e60e
+		summarizeBy: none
+		sourceColumn: Interpretation
+
+	column 'Study Window / Notes'
+		dataType: string
+		lineageTag: 33d297db-4dd0-451f-bea8-7f651f07f06c
+		summarizeBy: none
+		sourceColumn: StudyWindowNotes
+
+	partition Summary = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [Phenomenon = text, SolarMeasure = text, BestLagDays = Int64.Type, PearsonR = number, FDRP = number, Significant = text, Interpretation = text, StudyWindowNotes = text],
+						{
+							{"All earthquakes", "Flare count", 7, -0.038015, 0.157293, "No", "No robust association", "2016–2025"},
+							{"M6+ earthquakes", "Flare count", 3, -0.043994, 0.061771, "No", "Weak negative exploratory signal", "2016–2025"},
+							{"Volcanic eruptions", "Flare energy", 4, -0.017973, 0.954012, "No", "Essentially no association", "318 events / 300 active days"},
+							{"Precipitation anomaly", "Flare count", 7, 0.057563, 0.00477, "Yes", "Small positive association", "2016–2025; 3,561 days"},
+							{"Precipitation anomaly", "M-class flares", 7, 0.063654, 0.00117, "Yes", "Strongest significant signal", "2016–2025; 3,561 days"},
+							{"Temperature anomaly", "M-class flares", 0, -0.034223, 0.500697, "No", "No short-term association", "2016-01-02 to 2022-07-31; 2,403 days"}
+						}
+					)
+				in
+					Source
+

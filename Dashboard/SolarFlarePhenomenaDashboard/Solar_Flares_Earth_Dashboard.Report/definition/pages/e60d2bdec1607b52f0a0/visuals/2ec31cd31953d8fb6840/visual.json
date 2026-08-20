@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "2ec31cd31953d8fb6840",
+  "position": {
+    "x": 24,
+    "y": 96,
+    "z": 30,
+    "height": 110,
+    "width": 1232,
+    "tabOrder": 30
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary"
+                    }
+                  },
+                  "Property": "Strongest Abs r"
+                }
+              },
+              "queryRef": "Summary.Strongest Abs r",
+              "nativeQueryRef": "Strongest Abs r"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary"
+                    }
+                  },
+                  "Property": "Lowest FDR p"
+                }
+              },
+              "queryRef": "Summary.Lowest FDR p",
+              "nativeQueryRef": "Lowest FDR p"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary"
+                    }
+                  },
+                  "Property": "Significant Findings"
+                }
+              },
+              "queryRef": "Summary.Significant Findings",
+              "nativeQueryRef": "Significant Findings"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Key metrics'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6dd479fe0ac067c050e2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summary"
+              }
+            },
+            "Property": "Strongest Abs r"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f5388d7e678c37ab1738",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summary"
+              }
+            },
+            "Property": "Lowest FDR p"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "afe6c8cd9b8b66503eb8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summary"
+              }
+            },
+            "Property": "Significant Findings"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

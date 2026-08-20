@@ -1,0 +1,65 @@
+table HeadlineSummary
+	lineageTag: 430a2256-b795-4627-83a5-3a68c6b40450
+
+	/// One representative strongest result for each of the four terrestrial phenomena.
+	column Phenomenon
+		dataType: string
+		lineageTag: 34f6bc96-1670-4ab7-86c2-78cc91e89aa5
+		summarizeBy: none
+		sourceColumn: Phenomenon
+
+	column 'Solar Measure'
+		dataType: string
+		lineageTag: e5affedb-c49c-47a7-ab46-7442f518a117
+		summarizeBy: none
+		sourceColumn: SolarMeasure
+
+	column 'Best Lag (days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d6544ff-1c8d-434a-bc0c-d225914c278b
+		summarizeBy: none
+		sourceColumn: BestLagDays
+
+	column 'Pearson r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 14ef9d92-68b2-45d2-a155-7681fcd88a32
+		summarizeBy: none
+		sourceColumn: PearsonR
+
+	column 'FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: c4a37605-d7dc-454a-9979-d92c5d3e7f83
+		summarizeBy: none
+		sourceColumn: FDRP
+
+	column Significant
+		dataType: string
+		lineageTag: b492cbc4-ebb8-457c-93b5-e04a7414a67e
+		summarizeBy: none
+		sourceColumn: Significant
+
+	column Interpretation
+		dataType: string
+		lineageTag: 645a4b35-e9d4-4b6e-9681-2c7bf958f91d
+		summarizeBy: none
+		sourceColumn: Interpretation
+
+	partition HeadlineSummary = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [Phenomenon = text, SolarMeasure = text, BestLagDays = Int64.Type, PearsonR = number, FDRP = number, Significant = text, Interpretation = text],
+						{
+							{"Earthquakes", "Flare count (M6+)", 3, -0.043994, 0.061771, "No", "No robust association"},
+							{"Volcanic eruptions", "Flare energy", 4, -0.017973, 0.954012, "No", "Essentially no association"},
+							{"Precipitation anomaly", "M-class flares", 7, 0.063654, 0.00117, "Yes", "Small significant positive association"},
+							{"Temperature anomaly", "M-class flares", 0, -0.034223, 0.500697, "No", "No short-term association"}
+						}
+					)
+				in
+					Source
+

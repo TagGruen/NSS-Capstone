@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Solar_Flares_Earth_Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "79ca58c2-5d89-451f-bdfd-d4f6fbf27cac"
+  }
+}

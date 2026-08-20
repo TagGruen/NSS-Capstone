@@ -1,0 +1,115 @@
+table VolcanoLags
+	lineageTag: 85c89a93-0ed9-4c65-81ab-cdef66277260
+
+	/// Lagged volcanic eruption results across flare-count, occurrence, energy, and X-class tests.
+	column 'Lag Days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ea858bc-45c5-4061-b46a-cc8d480796a5
+		summarizeBy: none
+		sourceColumn: LagDays
+
+	column 'Eruption count r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 1e6e6b84-3095-4f2a-8277-34d469f5e105
+		summarizeBy: none
+		sourceColumn: EruptionCountR
+
+	column 'Eruption count p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 4c8b87e1-8c76-4172-9143-5781a1f0d8b6
+		summarizeBy: none
+		sourceColumn: EruptionCountP
+
+	column 'Eruption count FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: ea9b3194-6ff2-4c4e-bbf1-5645275ca925
+		summarizeBy: none
+		sourceColumn: EruptionCountFDRP
+
+	column 'Eruption occurrence r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 15c00679-139f-4b91-b770-e7fad0ed60ff
+		summarizeBy: none
+		sourceColumn: EruptionOccurrenceR
+
+	column 'Eruption occurrence p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 7383a5f3-8bb2-42bf-bd22-f0cfd9a64f9f
+		summarizeBy: none
+		sourceColumn: EruptionOccurrenceP
+
+	column 'Eruption occurrence FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 513aeb5d-7837-4768-85d3-6d0f40f64d05
+		summarizeBy: none
+		sourceColumn: EruptionOccurrenceFDRP
+
+	column 'Flare energy r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 841bd77d-d12a-4699-8b44-648dab577b43
+		summarizeBy: none
+		sourceColumn: FlareEnergyR
+
+	column 'Flare energy p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 0b600f3f-40d5-4c87-ac37-d92bd3fb0ec5
+		summarizeBy: none
+		sourceColumn: FlareEnergyP
+
+	column 'Flare energy FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 87f97f8a-1c9e-42aa-9f73-bd9ea5e862ec
+		summarizeBy: none
+		sourceColumn: FlareEnergyFDRP
+
+	column 'X-class r'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: f11d003b-3b01-47e5-a9e1-4769e2d1b284
+		summarizeBy: none
+		sourceColumn: XClassR
+
+	column 'X-class p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: ca42a3ad-58f6-43f1-9ee7-e2587e28adfa
+		summarizeBy: none
+		sourceColumn: XClassP
+
+	column 'X-class FDR p'
+		dataType: double
+		formatString: 0.000000
+		lineageTag: fd668569-5fde-47f4-a85e-5fc5f33d65f1
+		summarizeBy: none
+		sourceColumn: XClassFDRP
+
+	partition VolcanoLags = m
+		mode: import
+		source =
+				let
+					Source = #table(
+						type table [LagDays = Int64.Type, EruptionCountR = number, EruptionCountP = number, EruptionCountFDRP = number, EruptionOccurrenceR = number, EruptionOccurrenceP = number, EruptionOccurrenceFDRP = number, FlareEnergyR = number, FlareEnergyP = number, FlareEnergyFDRP = number, XClassR = number, XClassP = number, XClassFDRP = number],
+						{
+							{0, -0.004767, 0.773322, 0.93922, -0.003663, 0.824834, 0.825701, 0.004894, 0.76748, 0.954012, 0.002241, 0.892299, 0.892299},
+							{1, -0.003728, 0.821818, 0.93922, -0.00365, 0.825486, 0.825701, 0.00133, 0.935957, 0.954012, 0.007009, 0.671997, 0.767996},
+							{2, -0.001211, 0.941668, 0.941668, -0.003715, 0.822464, 0.825701, -0.000955, 0.954012, 0.954012, 0.01192, 0.471512, 0.767996},
+							{3, -0.004752, 0.774129, 0.93922, -0.00534, 0.747081, 0.825701, -0.007518, 0.649777, 0.954012, 0.007124, 0.667016, 0.767996},
+							{4, -0.016517, 0.318541, 0.93922, -0.015386, 0.352798, 0.825701, -0.017973, 0.277743, 0.954012, -0.007243, 0.66185, 0.767996},
+							{5, -0.012392, 0.454327, 0.93922, -0.014812, 0.371137, 0.825701, -0.011531, 0.486288, 0.954012, -0.012039, 0.467274, 0.767996},
+							{6, -0.007283, 0.660155, 0.93922, -0.005861, 0.723446, 0.825701, -0.014974, 0.365988, 0.954012, -0.007265, 0.66095, 0.767996},
+							{7, -0.006801, 0.681417, 0.93922, -0.003648, 0.825701, 0.825701, 0.002066, 0.900749, 0.954012, 0.01665, 0.314848, 0.767996}
+						}
+					)
+				in
+					Source
+

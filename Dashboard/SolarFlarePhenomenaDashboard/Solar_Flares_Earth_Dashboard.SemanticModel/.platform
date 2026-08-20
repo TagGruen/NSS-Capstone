@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Solar_Flares_Earth_Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "041026b7-178c-4a9e-9373-3b1ac3706acb"
+  }
+}

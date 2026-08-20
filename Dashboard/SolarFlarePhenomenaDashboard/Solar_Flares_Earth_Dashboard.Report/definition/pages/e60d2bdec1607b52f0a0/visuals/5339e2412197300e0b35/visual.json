@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "5339e2412197300e0b35",
+  "position": {
+    "x": 630,
+    "y": 466,
+    "z": 70,
+    "height": 230,
+    "width": 626,
+    "tabOrder": 70
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "EarthquakeLags"
+                    }
+                  },
+                  "Property": "Lag Days"
+                }
+              },
+              "queryRef": "EarthquakeLags.Lag Days",
+              "nativeQueryRef": "Lag Days",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "EarthquakeLags"
+                        }
+                      },
+                      "Property": "All earthquakes r"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(EarthquakeLags.All earthquakes r)",
+              "nativeQueryRef": "Sum of All earthquakes r"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "EarthquakeLags"
+                        }
+                      },
+                      "Property": "M6+ earthquakes r"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(EarthquakeLags.M6+ earthquakes r)",
+              "nativeQueryRef": "Sum of M6+ earthquakes r"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Earthquakes: correlation vs. lag'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

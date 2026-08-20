@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "5276a071e5d47e624f60",
+  "position": {
+    "x": 24,
+    "y": 466,
+    "z": 60,
+    "height": 230,
+    "width": 590,
+    "tabOrder": 60
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PrecipitationLags"
+                    }
+                  },
+                  "Property": "Lag Days"
+                }
+              },
+              "queryRef": "PrecipitationLags.Lag Days",
+              "nativeQueryRef": "Lag Days",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PrecipitationLags"
+                        }
+                      },
+                      "Property": "Precip anomaly r"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(PrecipitationLags.Precip anomaly r)",
+              "nativeQueryRef": "Sum of Precip anomaly r"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PrecipitationLags"
+                        }
+                      },
+                      "Property": "M-class r"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(PrecipitationLags.M-class r)",
+              "nativeQueryRef": "Sum of M-class r"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Precipitation: correlation vs. lag'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
