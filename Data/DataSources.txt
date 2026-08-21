@@ -1,8 +1,0 @@
-Solar Data:
-https://kauai.ccmc.gsfc.nasa.gov/DONKI/
-
-Eruption Data: 
-https://volcano.si.edu/search_eruption.cfm
-
-Earthquake Data:
-https://earthquake.usgs.gov/fdsnws/event/1/query
