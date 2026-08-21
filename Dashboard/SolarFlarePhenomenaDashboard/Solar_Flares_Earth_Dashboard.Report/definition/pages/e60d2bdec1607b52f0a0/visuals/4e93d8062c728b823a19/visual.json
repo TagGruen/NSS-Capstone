@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "4e93d8062c728b823a19",
   "position": {
-    "x": 630,
-    "y": 220,
+    "x": 653.11758360302042,
+    "y": 220.92772384034518,
     "z": 50,
-    "height": 230,
-    "width": 626,
+    "height": 254.06688241639696,
+    "width": 626.88241639697947,
     "tabOrder": 50
   },
   "visual": {
@@ -101,6 +101,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "HeadlineSummary"
+                  }
+                },
+                "Property": "Phenomenon"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
@@ -147,5 +164,93 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "11543abc1515c7edc6f5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Phenomenon"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e8f26e0185fa8374f2cd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Solar Measure"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "714c966e34cb42dd3123",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Best Lag (days)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "66969354a306730ed1db",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Pearson r"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "607ce8068434621d2397",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "FDR p"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ca9f05f5d3a4746bdbb9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Significant"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

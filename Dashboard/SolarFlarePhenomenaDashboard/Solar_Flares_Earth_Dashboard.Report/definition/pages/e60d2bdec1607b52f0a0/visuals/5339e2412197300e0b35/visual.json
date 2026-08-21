@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "5339e2412197300e0b35",
   "position": {
     "x": 630,
@@ -98,5 +98,61 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9e50d8437cc6123f478d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "EarthquakeLags"
+              }
+            },
+            "Property": "Lag Days"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c40a6a3ca8ef70188ff8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "EarthquakeLags"
+                  }
+                },
+                "Property": "All earthquakes r"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f9352b58ad5b6f3d16a9",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "EarthquakeLags"
+                  }
+                },
+                "Property": "M6+ earthquakes r"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "e1f5d07dcdacb36f490b",
   "position": {
     "x": 24,
@@ -79,5 +79,42 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8659c5cf138bd64eea9e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HeadlineSummary"
+              }
+            },
+            "Property": "Phenomenon"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "aeaa7daacd0b0ec5b5c5",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "HeadlineSummary"
+                  }
+                },
+                "Property": "Pearson r"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
